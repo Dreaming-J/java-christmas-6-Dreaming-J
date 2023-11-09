@@ -1,5 +1,9 @@
 package christmas.model.menu;
 
+import christmas.exception.Exception.OrderException;
+import java.util.Objects;
+import java.util.stream.Stream;
+
 public enum Menu {
     MUSHROOM_CREAM_SOUP(Category.APPETIZER, "양송이수프", 6_000),
     TAPAS(Category.APPETIZER, "타파스", 5_500),
@@ -22,5 +26,12 @@ public enum Menu {
         this.category = category;
         this.name = name;
         this.price = price;
+    }
+
+    public static Menu from(String name) {
+        return Stream.of(values())
+                .filter(menu -> Objects.equals(menu.name, name))
+                .findFirst()
+                .orElseThrow(OrderException::new);
     }
 }
