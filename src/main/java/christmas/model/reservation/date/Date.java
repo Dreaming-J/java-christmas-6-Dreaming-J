@@ -25,4 +25,8 @@ public class Date {
     private boolean isOverMax(int date) {
         return date > MAX_DATE;
     }
+
+    public Day findDay() {
+        return Day.from(date);
+    }
 }
