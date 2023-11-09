@@ -19,19 +19,34 @@ public enum Menu {
     CHAMPAGNE(Category.DRINK, "샴페인", 25_000);
 
     private final Category category;
-    private final String name;
+    private final String food;
     private final int price;
 
-    Menu(Category category, String name, int price) {
+    Menu(Category category, String food, int price) {
         this.category = category;
-        this.name = name;
+        this.food = food;
         this.price = price;
     }
 
-    public static Menu from(String name) {
+    public static Menu from(String food) {
         return Stream.of(values())
-                .filter(menu -> Objects.equals(menu.name, name))
+                .filter(menu -> Objects.equals(menu.food, food))
                 .findFirst()
                 .orElseThrow(OrderException::new);
+    }
+
+    public boolean isMain() {
+        return this.category
+                .isMain();
+    }
+
+    public boolean isDessert() {
+        return this.category
+                .isDessert();
+    }
+
+    public boolean isDrink() {
+        return this.category
+                .isDrink();
     }
 }
