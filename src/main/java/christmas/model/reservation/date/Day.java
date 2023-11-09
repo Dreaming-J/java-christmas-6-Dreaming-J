@@ -1,4 +1,4 @@
-package christmas.model.reservation;
+package christmas.model.reservation.date;
 
 import java.util.stream.Stream;
 
