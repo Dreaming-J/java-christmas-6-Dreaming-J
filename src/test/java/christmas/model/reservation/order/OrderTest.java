@@ -1,4 +1,4 @@
-package christmas.model.reservation;
+package christmas.model.reservation.order;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -24,7 +24,7 @@ public class OrderTest {
                 Arguments.of("딸기케이크-5", "메뉴판에 없는 메뉴 주문"),
                 Arguments.of("티본스테이크-1,레드와인-5,티본스테이크-1", "중복된 메뉴 주문"),
                 Arguments.of("크리스마스파스타-열개", "숫자가 아닌 개수 주문"),
-                Arguments.of("타파스-0, 시저샐러드-5", "1 미만의 개수 주문"),
+                Arguments.of("타파스-0,시저샐러드-5", "1 미만의 개수 주문"),
                 Arguments.of("바비큐립-5,아이스크림-10,제로콜라-5,샴페인-1", "메뉴 합계 20개 초과 주문")
         );
     }
