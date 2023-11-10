@@ -42,4 +42,10 @@ public class OrderTest {
         Order order = new Order("양송이수프-2,아이스크림-4,초코케이크-2,레드와인-1");
         assertEquals(order.countDessert(), 6);
     }
+
+    @Test
+    void 메인_주문_개수_계산_테스트() {
+        Order order = new Order("양송이수프-2,티본스테이크-4,초코케이크-2,크리스마스파스타-1");
+        assertEquals(order.countMain(), 5);
+    }
 }

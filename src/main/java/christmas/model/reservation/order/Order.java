@@ -45,4 +45,8 @@ public class Order {
                 .mapToInt(this::getQuantity)
                 .sum();
     }
+
+    public int countMain() {
+        return 0;
+    }
 }
