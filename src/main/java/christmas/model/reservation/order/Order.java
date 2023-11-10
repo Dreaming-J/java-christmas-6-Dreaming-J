@@ -39,6 +39,10 @@ public class Order {
     }
 
     public int countDessert() {
-        return 0;
+        return this.order.keySet()
+                .stream()
+                .filter(Menu::isDessert)
+                .mapToInt(this::getQuantity)
+                .sum();
     }
 }
