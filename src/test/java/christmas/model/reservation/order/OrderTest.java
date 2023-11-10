@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 public class OrderTest {
     @ParameterizedTest(name = "{index}: {1}")
     @MethodSource("generateData")
-    void 음료만_주문(String orders, String message) {
+    void 다양한_주문_유효성_테스트(String orders, String message) {
         assertThatThrownBy(() -> new Order(orders))
                 .isInstanceOf(OrderException.class);
     }
