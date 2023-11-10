@@ -1,5 +1,6 @@
 package christmas.model.reservation.order;
 
+import static christmas.Config.MAX_TOTAL_QUANTITY;
 import static christmas.Config.ORDER_REGEX;
 import static christmas.util.Constant.COMMA;
 import static christmas.util.Constant.DASH;
@@ -46,14 +47,20 @@ public class Order {
     }
 
     private void validateOrderMap(Map<Menu, Quantity> orderMap) {
-        if (isOnlyDrink(orderMap)) {
+        Stream<Menu> orderMenus = orderMap.keySet().stream();
+        Stream<Quantity> orderQuantities = orderMap.values().stream();
+
+        if (isOnlyDrink(orderMenus) || isOverMaxTotalQuantity(orderQuantities)) {
             throw new OrderException();
         }
     }
 
-    private boolean isOnlyDrink(Map<Menu, Quantity> orderMap) {
-        return orderMap.keySet()
-                .stream()
-                .allMatch(Menu::isDrink);
+    private boolean isOnlyDrink(Stream<Menu> orderMenus) {
+        return orderMenus.allMatch(Menu::isDrink);
+    }
+
+    private boolean isOverMaxTotalQuantity(Stream<Quantity> orderQuantities) {
+        return orderQuantities.mapToInt(Quantity::number)
+                .sum() > MAX_TOTAL_QUANTITY;
     }
 }
