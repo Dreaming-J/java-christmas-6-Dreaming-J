@@ -17,8 +17,12 @@ public class Order {
     private final Map<Menu, Quantity> order;
 
     public Order(String orders) {
-        validate(orders);
-        this.order = Stream.of(orders.split(COMMA))
+        validateRegex(orders);
+        this.order = createOrderMap(orders);
+    }
+
+    private Map<Menu, Quantity> createOrderMap(String orders) {
+        Map<Menu, Quantity> orderMap = Stream.of(orders.split(COMMA))
                 .map(order -> order.split(DASH))
                 .collect(Collectors
                         .toMap(order -> Menu.from(order[0]),
@@ -27,9 +31,11 @@ public class Order {
                                     throw new OrderException();
                                 },
                                 () -> new EnumMap<>(Menu.class)));
+        validateOrderMap(orderMap);
+        return orderMap;
     }
 
-    private void validate(String orders) {
+    private void validateRegex(String orders) {
         if (isNotRegex(orders)) {
             throw new OrderException();
         }
@@ -37,5 +43,17 @@ public class Order {
 
     private boolean isNotRegex(String orders) {
         return !Pattern.matches(ORDER_REGEX, orders);
+    }
+
+    private void validateOrderMap(Map<Menu, Quantity> orderMap) {
+        if (isOnlyDrink(orderMap)) {
+            throw new OrderException();
+        }
+    }
+
+    private boolean isOnlyDrink(Map<Menu, Quantity> orderMap) {
+        return orderMap.keySet()
+                .stream()
+                .allMatch(Menu::isDrink);
     }
 }
