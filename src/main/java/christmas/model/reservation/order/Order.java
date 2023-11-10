@@ -47,6 +47,10 @@ public class Order {
     }
 
     public int countMain() {
-        return 0;
+        return this.order.keySet()
+                .stream()
+                .filter(Menu::isMain)
+                .mapToInt(this::getQuantity)
+                .sum();
     }
 }
