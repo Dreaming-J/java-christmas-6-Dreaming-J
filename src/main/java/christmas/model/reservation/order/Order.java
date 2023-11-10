@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Order {
-    private final Map<Menu, Integer> order;
+    private final Map<Menu, Quantity> order;
 
     public Order(String orders) {
         validate(orders);
@@ -22,7 +22,7 @@ public class Order {
                 .map(order -> order.split(DASH))
                 .collect(Collectors
                         .toMap(order -> Menu.from(order[0]),
-                                order -> TypeConverter.toInt(order[1]),
+                                order -> new Quantity(TypeConverter.toInt(order[1])),
                                 (oldMenu, newMenu) -> {
                                     throw new OrderException();
                                 },
