@@ -25,4 +25,16 @@ public class Order {
     private boolean isNotRegex(String orders) {
         return !Pattern.matches(ORDER_REGEX, orders);
     }
+
+    public int amountDue() {
+        return this.order.keySet()
+                .stream()
+                .mapToInt(menu -> menu.getPrice() * getQuantity(menu))
+                .sum();
+    }
+
+    private int getQuantity(Menu menu) {
+        return this.order.get(menu)
+                .number();
+    }
 }

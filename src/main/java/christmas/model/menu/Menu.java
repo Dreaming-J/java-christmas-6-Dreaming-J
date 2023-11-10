@@ -35,6 +35,10 @@ public enum Menu {
                 .orElseThrow(OrderException::new);
     }
 
+    public int getPrice() {
+        return this.price;
+    }
+
     public boolean isMain() {
         return this.category
                 .isMain();
