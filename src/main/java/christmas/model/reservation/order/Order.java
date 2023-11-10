@@ -37,4 +37,8 @@ public class Order {
         return this.order.get(menu)
                 .number();
     }
+
+    public int countDessert() {
+        return 0;
+    }
 }

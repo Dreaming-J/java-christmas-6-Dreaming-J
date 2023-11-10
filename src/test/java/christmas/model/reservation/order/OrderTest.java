@@ -36,4 +36,10 @@ public class OrderTest {
         Order order = new Order("양송이수프-2,티본스테이크-1,초코케이크-2,레드와인-1");
         assertEquals(order.amountDue(), 157_000);
     }
+
+    @Test
+    void 디저트_주문_개수_계산_테스트() {
+        Order order = new Order("양송이수프-2,아이스크림-4,초코케이크-2,레드와인-1");
+        assertEquals(order.countDessert(), 6);
+    }
 }
