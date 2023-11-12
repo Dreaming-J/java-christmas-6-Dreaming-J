@@ -9,11 +9,11 @@ public enum Badge {
     STAR(5_000, "별"),
     NOTHING(0, "없음");
 
-    private final int condition;
+    private final int threshold;
     private final String name;
 
-    Badge(int condition, String name) {
-        this.condition = condition;
+    Badge(int threshold, String name) {
+        this.threshold = threshold;
         this.name = name;
     }
 
@@ -25,7 +25,7 @@ public enum Badge {
     }
 
     private boolean isMoreCondition(int discount) {
-        return discount >= this.condition;
+        return discount >= this.threshold;
     }
 
     @Override
