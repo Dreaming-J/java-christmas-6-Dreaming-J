@@ -30,10 +30,10 @@ public enum Day {
     }
 
     public boolean isWeekday() {
-        return false;
+        return this.week == WEEKDAY;
     }
 
     public boolean isWeekend() {
-        return false;
+        return this.week == WEEKEND;
     }
 }
