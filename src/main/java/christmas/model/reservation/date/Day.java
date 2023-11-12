@@ -1,20 +1,25 @@
 package christmas.model.reservation.date;
 
+import static christmas.model.reservation.date.Week.WEEKDAY;
+import static christmas.model.reservation.date.Week.WEEKEND;
+
 import java.util.stream.Stream;
 
 public enum Day {
-    MONDAY(4),
-    TUESDAY(5),
-    WEDNESDAY(6),
-    THURSDAY(0),
-    FRIDAY(1),
-    SATURDAY(2),
-    SUNDAY(3);
+    MONDAY(4, WEEKDAY),
+    TUESDAY(5, WEEKDAY),
+    WEDNESDAY(6, WEEKDAY),
+    THURSDAY(0, WEEKDAY),
+    FRIDAY(1, WEEKDAY),
+    SATURDAY(2, WEEKEND),
+    SUNDAY(3, WEEKEND);
 
     private final int date;
+    private final Week week;
 
-    Day(int date) {
+    Day(int date, Week week) {
         this.date = date;
+        this.week = week;
     }
 
     public static Day from(int date) {
@@ -22,5 +27,13 @@ public enum Day {
                 .filter(day -> day.date == date % 7)
                 .findFirst()
                 .get();
+    }
+
+    public boolean isWeekday() {
+        return false;
+    }
+
+    public boolean isWeekend() {
+        return false;
     }
 }
