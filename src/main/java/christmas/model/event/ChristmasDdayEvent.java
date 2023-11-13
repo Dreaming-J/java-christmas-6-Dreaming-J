@@ -1,7 +1,7 @@
 package christmas.model.event;
 
 import static christmas.config.EventConfig.COMMA_FORMATTER;
-import static christmas.config.EventConfig.ConfigChristmasDdayEvent.DISCOUNT_UNIT;
+import static christmas.config.EventConfig.ConfigChristmasDdayEvent.CHRISTMAS_EVENT_DISCOUNT_UNIT;
 import static christmas.config.EventConfig.ConfigChristmasDdayEvent.END_DATE;
 import static christmas.config.EventConfig.ConfigChristmasDdayEvent.START_DATE;
 import static christmas.config.EventConfig.ConfigChristmasDdayEvent.START_DISCOUNT;
@@ -31,7 +31,7 @@ public class ChristmasDdayEvent extends Event {
         }
 
         this.discount = START_DISCOUNT +
-                DISCOUNT_UNIT * (date - 1);
+                CHRISTMAS_EVENT_DISCOUNT_UNIT * (date - 1);
     }
 
     @Override
