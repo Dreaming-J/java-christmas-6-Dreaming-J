@@ -14,7 +14,7 @@ public abstract class Event {
         this.amountDue = amountDue;
     }
 
-    protected boolean canDiscount() {
+    public boolean canDiscount() {
         return this.amountDue >= MIN_AMOUNT_DUE_FOR_EVENT;
     }
 
