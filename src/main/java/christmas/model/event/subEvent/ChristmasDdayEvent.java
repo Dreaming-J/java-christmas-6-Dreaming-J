@@ -1,4 +1,4 @@
-package christmas.model.event;
+package christmas.model.event.subEvent;
 
 import static christmas.config.EventConfig.ConfigChristmasDdayEvent.CHRISTMAS_EVENT_DISCOUNT_UNIT;
 import static christmas.config.EventConfig.ConfigChristmasDdayEvent.END_DATE;
@@ -9,6 +9,7 @@ import static christmas.util.Constant.EMPTY;
 
 import christmas.model.Money;
 import christmas.model.date.Date;
+import christmas.model.event.Event;
 import christmas.model.order.Order;
 
 public class ChristmasDdayEvent extends Event {

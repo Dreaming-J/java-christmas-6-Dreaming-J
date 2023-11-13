@@ -1,4 +1,4 @@
-package christmas.model.event;
+package christmas.model.event.subEvent;
 
 import static christmas.config.EventConfig.WEEKDAY_EVENT_DISCOUNT_UNIT;
 import static christmas.model.event.EventMsg.WEEKDAY_EVENT_MSG;
@@ -6,6 +6,7 @@ import static christmas.util.Constant.EMPTY;
 
 import christmas.model.Money;
 import christmas.model.date.Date;
+import christmas.model.event.Event;
 import christmas.model.order.Order;
 
 public class WeekdayEvent extends Event {

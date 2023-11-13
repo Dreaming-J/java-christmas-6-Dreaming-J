@@ -4,12 +4,12 @@ import static christmas.util.Constant.LINE_BREAK;
 import static christmas.util.Constant.NOTHING;
 
 import christmas.model.date.Date;
-import christmas.model.event.ChristmasDdayEvent;
 import christmas.model.event.Event;
-import christmas.model.event.GiveawayEvent;
-import christmas.model.event.SpecialEvent;
-import christmas.model.event.WeekdayEvent;
-import christmas.model.event.WeekendEvent;
+import christmas.model.event.subEvent.ChristmasDdayEvent;
+import christmas.model.event.subEvent.GiveawayEvent;
+import christmas.model.event.subEvent.SpecialEvent;
+import christmas.model.event.subEvent.WeekdayEvent;
+import christmas.model.event.subEvent.WeekendEvent;
 import christmas.model.order.Order;
 import java.util.ArrayList;
 import java.util.List;

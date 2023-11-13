@@ -1,7 +1,6 @@
-package christmas.model.benefit;
+package christmas.model;
 
 import christmas.exception.Exception.BadgeException;
-import christmas.model.Money;
 import java.util.stream.Stream;
 
 public enum Badge {

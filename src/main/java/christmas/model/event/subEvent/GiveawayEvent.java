@@ -1,4 +1,4 @@
-package christmas.model.event;
+package christmas.model.event.subEvent;
 
 import static christmas.config.EventConfig.ConfigGiveawayEvent.GIVEAWAY_EVENT_THRESHOLD_AMOUNT_DUE;
 import static christmas.config.EventConfig.ConfigGiveawayEvent.GIVEAWAY_MENU;
@@ -6,6 +6,7 @@ import static christmas.model.event.EventMsg.GIVEAWAY_EVENT_MSG;
 import static christmas.util.Constant.EMPTY;
 
 import christmas.model.date.Date;
+import christmas.model.event.Event;
 import christmas.model.menu.Menu;
 import christmas.model.order.Order;
 

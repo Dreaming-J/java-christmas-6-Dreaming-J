@@ -1,8 +1,9 @@
-package christmas.model.event;
+package christmas.model.event.subEvent;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import christmas.model.date.Date;
+import christmas.model.event.Event;
 import christmas.model.order.Order;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
