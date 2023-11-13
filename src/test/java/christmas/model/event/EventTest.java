@@ -59,5 +59,21 @@ public class EventTest {
             Event weekdayEvent = new WeekdayEvent(new Date(date), 10_000);
             assertEquals(weekdayEvent.isFitCondition(), isFit);
         }
+
+        @ParameterizedTest(name = "[{index}] 디저트 개수:{0}, 결과:{1}")
+        @MethodSource("generateData")
+        void 할인_적용_테스트(int date, String discount) {
+            Event weekdayEvent = new WeekdayEvent(new Date(date), 10_000);
+            weekdayEvent.applyBenefit(date);
+            assertEquals(weekdayEvent.toString(), discount);
+        }
+
+        private static Stream<Arguments> generateData() {
+            return Stream.of(
+                    Arguments.of(0, ""),
+                    Arguments.of(1, "평일 할인: -2,023원"),
+                    Arguments.of(5, "평일 할인: -10,115원")
+            );
+        }
     }
 }
