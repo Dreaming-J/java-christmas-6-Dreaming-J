@@ -8,7 +8,6 @@ import static christmas.util.Constant.EMPTY;
 import christmas.model.date.Date;
 
 public class SpecialEvent extends Event {
-
     public SpecialEvent(Date date, int amountDue) {
         super(date, amountDue);
     }
