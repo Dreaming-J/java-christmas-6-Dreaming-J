@@ -1,11 +1,11 @@
 package christmas.model.event;
 
-import static christmas.Config.COMMA_FORMATTER;
-import static christmas.Config.ConfigChristmasDdayEvent.CHRISTMAS_DDAY_EVENT_MESSAGE;
-import static christmas.Config.ConfigChristmasDdayEvent.DISCOUNT_UNIT;
-import static christmas.Config.ConfigChristmasDdayEvent.END_DATE;
-import static christmas.Config.ConfigChristmasDdayEvent.START_DATE;
-import static christmas.Config.ConfigChristmasDdayEvent.START_DISCOUNT;
+import static christmas.config.EventConfig.COMMA_FORMATTER;
+import static christmas.config.EventConfig.ConfigChristmasDdayEvent.DISCOUNT_UNIT;
+import static christmas.config.EventConfig.ConfigChristmasDdayEvent.END_DATE;
+import static christmas.config.EventConfig.ConfigChristmasDdayEvent.START_DATE;
+import static christmas.config.EventConfig.ConfigChristmasDdayEvent.START_DISCOUNT;
+import static christmas.model.event.EventMsg.CHRISTMAS_DDAY_EVENT_MSG;
 import static christmas.util.Constant.EMPTY;
 
 import christmas.model.reservation.date.Date;
@@ -16,8 +16,8 @@ public class ChristmasDdayEvent extends Event {
     }
 
     @Override
-    public boolean isFitCondition() {
-        return super.isFitCondition() && isBetweenDate();
+    public boolean canDiscount() {
+        return super.canDiscount() && isBetweenDate();
     }
 
     private boolean isBetweenDate() {
@@ -26,7 +26,7 @@ public class ChristmasDdayEvent extends Event {
 
     @Override
     public void applyBenefit(int date) {
-        if (!isFitCondition()) {
+        if (!canDiscount()) {
             return;
         }
 
@@ -36,10 +36,10 @@ public class ChristmasDdayEvent extends Event {
 
     @Override
     public String toString() {
-        if (!existsDiscount()) {
+        if (doesNotExistDiscount()) {
             return EMPTY;
         }
 
-        return String.format(CHRISTMAS_DDAY_EVENT_MESSAGE, COMMA_FORMATTER.format(this.discount));
+        return String.format(CHRISTMAS_DDAY_EVENT_MSG.toString(), COMMA_FORMATTER.format(this.discount));
     }
 }

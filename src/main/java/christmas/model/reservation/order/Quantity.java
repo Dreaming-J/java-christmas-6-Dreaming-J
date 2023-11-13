@@ -1,6 +1,6 @@
 package christmas.model.reservation.order;
 
-import static christmas.Config.MIN_QUNTITY;
+import static christmas.config.OrderConfig.MIN_QUNTITY;
 
 import christmas.exception.Exception.OrderException;
 

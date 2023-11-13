@@ -20,7 +20,7 @@ public class EventTest {
             public void applyBenefit(int applicableTarget) {
             }
         };
-        assertEquals(event.isFitCondition(), isFit);
+        assertEquals(event.canDiscount(), isFit);
     }
 
     @DisplayName("크리스마스 디데이 할인")
@@ -30,7 +30,7 @@ public class EventTest {
         @CsvSource(value = {"1,true", "25,true", "30,false"})
         void 조건_테스트(int date, boolean isFit) {
             Event christmasDdayEvent = new ChristmasDdayEvent(new Date(date), 10_000);
-            assertEquals(christmasDdayEvent.isFitCondition(), isFit);
+            assertEquals(christmasDdayEvent.canDiscount(), isFit);
         }
 
         @ParameterizedTest(name = "[{index}] 날짜:{0}, 결과:{1}")
@@ -57,14 +57,14 @@ public class EventTest {
         @CsvSource(value = {"1,false", "2,false", "3,true", "4,true", "5,true", "6,true", "7,true"})
         void 조건_테스트(int date, boolean isFit) {
             Event weekdayEvent = new WeekdayEvent(new Date(date), 10_000);
-            assertEquals(weekdayEvent.isFitCondition(), isFit);
+            assertEquals(weekdayEvent.canDiscount(), isFit);
         }
 
         @ParameterizedTest(name = "[{index}] 디저트 개수:{0}, 결과:{1}")
         @MethodSource("generateData")
-        void 할인_적용_테스트(int date, String discount) {
-            Event weekdayEvent = new WeekdayEvent(new Date(date), 10_000);
-            weekdayEvent.applyBenefit(date);
+        void 할인_적용_테스트(int quantityOfDessert, String discount) {
+            Event weekdayEvent = new WeekdayEvent(new Date(3), 10_000);
+            weekdayEvent.applyBenefit(quantityOfDessert);
             assertEquals(weekdayEvent.toString(), discount);
         }
 

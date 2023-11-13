@@ -1,6 +1,6 @@
 package christmas.model.reservation.order;
 
-import static christmas.Config.MAX_TOTAL_QUANTITY;
+import static christmas.config.OrderConfig.MAX_TOTAL_QUANTITY;
 import static christmas.util.Constant.COMMA;
 import static christmas.util.Constant.DASH;
 
