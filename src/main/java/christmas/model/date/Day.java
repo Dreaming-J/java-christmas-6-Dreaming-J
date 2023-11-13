@@ -1,18 +1,15 @@
-package christmas.model.reservation.date;
-
-import static christmas.model.reservation.date.Week.WEEKDAY;
-import static christmas.model.reservation.date.Week.WEEKEND;
+package christmas.model.date;
 
 import java.util.stream.Stream;
 
 public enum Day {
-    MONDAY(4, WEEKDAY),
-    TUESDAY(5, WEEKDAY),
-    WEDNESDAY(6, WEEKDAY),
-    THURSDAY(0, WEEKDAY),
-    FRIDAY(1, WEEKEND),
-    SATURDAY(2, WEEKEND),
-    SUNDAY(3, WEEKDAY);
+    MONDAY(4, Week.WEEKDAY),
+    TUESDAY(5, Week.WEEKDAY),
+    WEDNESDAY(6, Week.WEEKDAY),
+    THURSDAY(0, Week.WEEKDAY),
+    FRIDAY(1, Week.WEEKEND),
+    SATURDAY(2, Week.WEEKEND),
+    SUNDAY(3, Week.WEEKDAY);
 
     private final int date;
     private final Week week;
@@ -30,11 +27,11 @@ public enum Day {
     }
 
     public boolean isWeekday() {
-        return this.week == WEEKDAY;
+        return this.week == Week.WEEKDAY;
     }
 
     public boolean isWeekend() {
-        return this.week == WEEKEND;
+        return this.week == Week.WEEKEND;
     }
 
     public boolean isSunday() {

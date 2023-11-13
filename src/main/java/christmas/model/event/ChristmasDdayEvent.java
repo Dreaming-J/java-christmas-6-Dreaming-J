@@ -8,7 +8,7 @@ import static christmas.config.EventConfig.ConfigChristmasDdayEvent.START_DISCOU
 import static christmas.model.event.EventMsg.CHRISTMAS_DDAY_EVENT_MSG;
 import static christmas.util.Constant.EMPTY;
 
-import christmas.model.reservation.date.Date;
+import christmas.model.date.Date;
 
 public class ChristmasDdayEvent extends Event {
     public ChristmasDdayEvent(Date date, int amountDue) {

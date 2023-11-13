@@ -5,7 +5,7 @@ import static christmas.config.EventConfig.WEEKEND_EVENT_DISCOUNT_UNIT;
 import static christmas.model.event.EventMsg.WEEKEND_EVENT_MSG;
 import static christmas.util.Constant.EMPTY;
 
-import christmas.model.reservation.date.Date;
+import christmas.model.date.Date;
 
 public class WeekendEvent extends Event {
     public WeekendEvent(Date date, int amountDue) {

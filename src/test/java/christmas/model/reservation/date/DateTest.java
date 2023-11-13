@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import christmas.exception.Exception.DateException;
+import christmas.model.date.Date;
 import org.junit.jupiter.api.Test;
 
 public class DateTest {

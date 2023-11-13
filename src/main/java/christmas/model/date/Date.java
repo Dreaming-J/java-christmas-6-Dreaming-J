@@ -1,4 +1,4 @@
-package christmas.model.reservation.date;
+package christmas.model.date;
 
 import static christmas.config.DateConfig.CHRISTMAS_DATE;
 import static christmas.config.DateConfig.MAX_DATE;

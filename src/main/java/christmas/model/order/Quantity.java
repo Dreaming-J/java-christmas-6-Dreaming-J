@@ -1,4 +1,4 @@
-package christmas.model.reservation.order;
+package christmas.model.order;
 
 import static christmas.config.OrderConfig.MIN_QUNTITY;
 

@@ -1,4 +1,4 @@
-package christmas.model.reservation.date;
+package christmas.model.date;
 
 public enum Week {
     WEEKDAY, WEEKEND;

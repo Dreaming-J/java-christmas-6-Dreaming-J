@@ -2,7 +2,7 @@ package christmas.model.event;
 
 import static christmas.config.EventConfig.MIN_AMOUNT_DUE_FOR_EVENT;
 
-import christmas.model.reservation.date.Date;
+import christmas.model.date.Date;
 
 public abstract class Event {
     protected final Date date;

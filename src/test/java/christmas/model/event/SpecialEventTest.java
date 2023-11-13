@@ -2,7 +2,7 @@ package christmas.model.event;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import christmas.model.reservation.date.Date;
+import christmas.model.date.Date;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

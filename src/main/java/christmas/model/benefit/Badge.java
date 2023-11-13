@@ -1,4 +1,4 @@
-package christmas.model.reservation.benefit;
+package christmas.model.benefit;
 
 import christmas.exception.Exception.BadgeException;
 import java.util.stream.Stream;

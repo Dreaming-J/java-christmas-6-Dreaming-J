@@ -1,7 +1,7 @@
-package christmas.model.reservation.order;
+package christmas.model.order;
 
 import static christmas.config.OrderConfig.ORDER_REGEX;
-import static christmas.model.reservation.order.OrderMapGenerator.createOrderMap;
+import static christmas.model.order.OrderMapGenerator.createOrderMap;
 
 import christmas.exception.Exception.OrderException;
 import christmas.model.menu.Menu;

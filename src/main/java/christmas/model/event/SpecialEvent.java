@@ -5,7 +5,7 @@ import static christmas.config.EventConfig.WEEK_EVENT_DISCOUNT;
 import static christmas.model.event.EventMsg.SPECIAL_EVENT_MSG;
 import static christmas.util.Constant.EMPTY;
 
-import christmas.model.reservation.date.Date;
+import christmas.model.date.Date;
 
 public class SpecialEvent extends Event {
 
