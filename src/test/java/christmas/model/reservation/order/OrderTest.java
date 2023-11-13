@@ -49,4 +49,11 @@ public class OrderTest {
         Order order = new Order("양송이수프-2,티본스테이크-4,초코케이크-2,크리스마스파스타-1");
         assertEquals(order.countMain(), 5);
     }
+
+    @Test
+    void 주문_출력_테스트() {
+        Order order = new Order("양송이수프-2,티본스테이크-4,초코케이크-2,크리스마스파스타-1");
+        String answer = "양송이수프 2개\n티본스테이크 4개\n크리스마스파스타 1개\n초코케이크 2개";
+        assertEquals(order.toString(), answer);
+    }
 }
