@@ -6,4 +6,5 @@ public class Constant {
     public static final String EMPTY = "";
     public static final String LINE_BREAK = "\n";
     public static final int SIGN_CONVERTER = -1;
+    public static final String NOTHING = "없음";
 }
