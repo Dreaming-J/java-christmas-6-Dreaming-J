@@ -17,7 +17,7 @@ public class EventTest {
     void 총주문_금액_10000_적용_테스트(int amountDue, boolean isFit) {
         Event event = new Event(amountDue) {
             @Override
-            public void applyBenefit() {
+            public void applyBenefit(int applicableTarget) {
             }
         };
         assertEquals(event.isFitCondition(), isFit);
@@ -37,7 +37,7 @@ public class EventTest {
         @MethodSource("generateData")
         void 할인_적용_테스트(int amountDue, int date, String discount) {
             Event christmasDdayEvent = new ChristmasDdayEvent(amountDue, new Date(date));
-            christmasDdayEvent.applyBenefit();
+            christmasDdayEvent.applyBenefit(date);
             assertEquals(christmasDdayEvent.toString(), discount);
         }
 
