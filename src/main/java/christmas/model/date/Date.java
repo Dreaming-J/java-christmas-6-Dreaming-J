@@ -1,6 +1,7 @@
 package christmas.model.date;
 
 import static christmas.config.DateConfig.CHRISTMAS_DATE;
+import static christmas.config.DateConfig.DATE_STRING_FORMAT;
 import static christmas.config.DateConfig.MAX_DATE;
 import static christmas.config.DateConfig.MIN_DATE;
 
@@ -47,5 +48,10 @@ public record Date(int date) {
 
     private boolean isChristmas() {
         return this.date == CHRISTMAS_DATE;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(DATE_STRING_FORMAT, this.date);
     }
 }
