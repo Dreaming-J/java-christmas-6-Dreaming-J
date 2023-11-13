@@ -15,6 +15,6 @@ public class EventConfig {
 
     public static final int WEEKDAY_EVENT_DISCOUNT_UNIT = 2_023;
     public static final int WEEKEND_EVENT_DISCOUNT_UNIT = 2_023;
-    public static final int WEEK_EVENT_DISCOUNT = 1_000;
-    public static final int SPECIAL_EVENT_THRESHOLD_AMOUNT_DUE = 120_000;
+    public static final int SPECIAL_EVENT_DISCOUNT = 1_000;
+    public static final int GIVEAWAY_EVENT_THRESHOLD_AMOUNT_DUE = 120_000;
 }

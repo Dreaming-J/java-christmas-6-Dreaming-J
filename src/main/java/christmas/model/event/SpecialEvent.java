@@ -1,7 +1,7 @@
 package christmas.model.event;
 
 import static christmas.config.EventConfig.COMMA_FORMATTER;
-import static christmas.config.EventConfig.WEEK_EVENT_DISCOUNT;
+import static christmas.config.EventConfig.SPECIAL_EVENT_DISCOUNT;
 import static christmas.model.event.EventMsg.SPECIAL_EVENT_MSG;
 import static christmas.util.Constant.EMPTY;
 
@@ -24,7 +24,7 @@ public class SpecialEvent extends Event {
             return;
         }
 
-        this.discount = WEEK_EVENT_DISCOUNT;
+        this.discount = SPECIAL_EVENT_DISCOUNT;
     }
 
     @Override

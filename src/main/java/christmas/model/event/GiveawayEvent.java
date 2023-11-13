@@ -1,6 +1,6 @@
 package christmas.model.event;
 
-import static christmas.config.EventConfig.SPECIAL_EVENT_THRESHOLD_AMOUNT_DUE;
+import static christmas.config.EventConfig.GIVEAWAY_EVENT_THRESHOLD_AMOUNT_DUE;
 
 import christmas.model.date.Date;
 
@@ -16,7 +16,7 @@ public class GiveawayEvent extends Event {
     }
 
     private boolean isOverThreshold() {
-        return amountDue >= SPECIAL_EVENT_THRESHOLD_AMOUNT_DUE;
+        return amountDue >= GIVEAWAY_EVENT_THRESHOLD_AMOUNT_DUE;
     }
 
     @Override
