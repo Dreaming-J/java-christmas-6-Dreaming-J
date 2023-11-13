@@ -1,11 +1,11 @@
 package christmas.model.event;
 
-import static christmas.config.EventConfig.COMMA_FORMATTER;
 import static christmas.config.EventConfig.ConfigChristmasDdayEvent.CHRISTMAS_EVENT_DISCOUNT_UNIT;
 import static christmas.config.EventConfig.ConfigChristmasDdayEvent.END_DATE;
 import static christmas.config.EventConfig.ConfigChristmasDdayEvent.START_DATE;
 import static christmas.config.EventConfig.ConfigChristmasDdayEvent.START_DISCOUNT;
 import static christmas.model.event.EventMsg.CHRISTMAS_DDAY_EVENT_MSG;
+import static christmas.util.Constant.COMMA_FORMATTER;
 import static christmas.util.Constant.EMPTY;
 
 import christmas.model.date.Date;

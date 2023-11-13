@@ -1,8 +1,8 @@
 package christmas.model.event;
 
-import static christmas.config.EventConfig.COMMA_FORMATTER;
 import static christmas.config.EventConfig.SPECIAL_EVENT_DISCOUNT;
 import static christmas.model.event.EventMsg.SPECIAL_EVENT_MSG;
+import static christmas.util.Constant.COMMA_FORMATTER;
 import static christmas.util.Constant.EMPTY;
 
 import christmas.model.date.Date;

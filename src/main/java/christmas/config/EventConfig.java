@@ -1,10 +1,7 @@
 package christmas.config;
 
-import java.text.DecimalFormat;
-
 public class EventConfig {
     public static final int MIN_AMOUNT_DUE_FOR_EVENT = 10_000;
-    public static final DecimalFormat COMMA_FORMATTER = new DecimalFormat("###,###");
 
     public static class ConfigChristmasDdayEvent {
         public static final int START_DATE = 1;

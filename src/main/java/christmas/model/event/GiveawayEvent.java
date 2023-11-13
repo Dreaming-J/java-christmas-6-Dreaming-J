@@ -1,9 +1,9 @@
 package christmas.model.event;
 
-import static christmas.config.EventConfig.COMMA_FORMATTER;
 import static christmas.config.EventConfig.ConfigGiveawayEvent.GIVEAWAY_EVENT_THRESHOLD_AMOUNT_DUE;
 import static christmas.config.EventConfig.ConfigGiveawayEvent.GIVEAWAY_MENU;
 import static christmas.model.event.EventMsg.GIVEAWAY_EVENT_MSG;
+import static christmas.util.Constant.COMMA_FORMATTER;
 import static christmas.util.Constant.EMPTY;
 
 import christmas.model.date.Date;
