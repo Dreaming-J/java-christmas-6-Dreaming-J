@@ -35,6 +35,10 @@ public enum Menu {
                 .orElseThrow(OrderException::new);
     }
 
+    public String getFood() {
+        return this.food;
+    }
+
     public int getPrice() {
         return this.price;
     }
