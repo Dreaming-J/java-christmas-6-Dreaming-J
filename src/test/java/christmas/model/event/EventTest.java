@@ -15,7 +15,7 @@ public class EventTest {
     @ParameterizedTest
     @CsvSource(value = {"9_999,false", "10_000,true"})
     void 총주문_금액_10000_적용_테스트(int amountDue, boolean isFit) {
-        Event event = new Event(amountDue) {
+        Event event = new Event(new Date(1), amountDue) {
             @Override
             public void applyBenefit(int applicableTarget) {
             }
@@ -27,25 +27,25 @@ public class EventTest {
     @Nested
     class ChristmasDdayEventTest {
         @ParameterizedTest(name = "[{index}] 날짜:{1}, 결과:{2}")
-        @CsvSource(value = {"10_000,1,true", "10_000,25,true", "10_000,30,false"})
-        void 조건_테스트(int amountDue, int date, boolean isFit) {
-            Event christmasDdayEvent = new ChristmasDdayEvent(amountDue, new Date(date));
+        @CsvSource(value = {"1,10_000,true", "25,10_000,true", "30,10_000,false"})
+        void 조건_테스트(int date, int amountDue, boolean isFit) {
+            Event christmasDdayEvent = new ChristmasDdayEvent(new Date(date), amountDue);
             assertEquals(christmasDdayEvent.isFitCondition(), isFit);
         }
 
         @ParameterizedTest(name = "[{index}] 날짜:{1}, 결과:{2}")
         @MethodSource("generateData")
-        void 할인_적용_테스트(int amountDue, int date, String discount) {
-            Event christmasDdayEvent = new ChristmasDdayEvent(amountDue, new Date(date));
+        void 할인_적용_테스트(int date, int amountDue, String discount) {
+            Event christmasDdayEvent = new ChristmasDdayEvent(new Date(date), amountDue);
             christmasDdayEvent.applyBenefit(date);
             assertEquals(christmasDdayEvent.toString(), discount);
         }
 
         private static Stream<Arguments> generateData() {
             return Stream.of(
-                    Arguments.of(10_000, 1, "크리스마스 디데이 할인: -1,000원"),
-                    Arguments.of(10_000, 25, "크리스마스 디데이 할인: -3,400원"),
-                    Arguments.of(10_000, 30, "")
+                    Arguments.of(1, 10_000, "크리스마스 디데이 할인: -1,000원"),
+                    Arguments.of(25, 10_000, "크리스마스 디데이 할인: -3,400원"),
+                    Arguments.of(30, 10_000, "")
             );
         }
     }

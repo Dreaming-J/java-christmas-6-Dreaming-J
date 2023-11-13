@@ -11,11 +11,8 @@ import static christmas.util.Constant.EMPTY;
 import christmas.model.reservation.date.Date;
 
 public class ChristmasDdayEvent extends Event {
-    private final Date date;
-
-    public ChristmasDdayEvent(int amountDue, Date date) {
-        super(amountDue);
-        this.date = date;
+    public ChristmasDdayEvent(Date date, int amountDue) {
+        super(date, amountDue);
     }
 
     @Override
