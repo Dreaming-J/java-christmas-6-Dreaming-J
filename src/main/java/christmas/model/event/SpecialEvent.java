@@ -6,10 +6,11 @@ import static christmas.util.Constant.EMPTY;
 
 import christmas.model.Money;
 import christmas.model.date.Date;
+import christmas.model.order.Order;
 
 public class SpecialEvent extends Event {
-    public SpecialEvent(Date date, Money amountDue) {
-        super(date, amountDue);
+    public SpecialEvent(Date date, Order order) {
+        super(date, order);
     }
 
     @Override
@@ -18,7 +19,7 @@ public class SpecialEvent extends Event {
     }
 
     @Override
-    public void applyBenefit(int date) {
+    public void applyBenefit() {
         if (!canDiscount()) {
             return;
         }

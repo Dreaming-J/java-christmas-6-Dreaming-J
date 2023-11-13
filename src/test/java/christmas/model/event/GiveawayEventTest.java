@@ -2,8 +2,8 @@ package christmas.model.event;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import christmas.model.Money;
 import christmas.model.date.Date;
+import christmas.model.order.Order;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -11,25 +11,25 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class GiveawayEventTest {
-    @ParameterizedTest(name = "[{index}] 총주문금액:{0}, 결과:{1}")
-    @CsvSource(value = {"119_999,false", "120_000,true"})
-    void 조건_테스트(int amountDue, boolean isFit) {
-        Event giveawayEvent = new GiveawayEvent(new Date(1), new Money(amountDue));
+    @ParameterizedTest
+    @CsvSource(value = {"초코케이크-7,false", "초코케이크-8,true"})
+    void 조건_테스트(String menus, boolean isFit) {
+        Event giveawayEvent = new GiveawayEvent(new Date(1), new Order(menus));
         assertEquals(giveawayEvent.canDiscount(), isFit);
     }
 
-    @ParameterizedTest(name = "[{index}] 총주문금액:{0}, 결과:{1}")
+    @ParameterizedTest
     @MethodSource("generateData")
-    void 할인_적용_테스트(int amountDue, String discount) {
-        Event giveawayEvent = new GiveawayEvent(new Date(1), new Money(amountDue));
-        giveawayEvent.applyBenefit(0);
+    void 할인_적용_테스트(Order order, String discount) {
+        Event giveawayEvent = new GiveawayEvent(new Date(1), order);
+        giveawayEvent.applyBenefit();
         assertEquals(giveawayEvent.toString(), discount);
     }
 
     private static Stream<Arguments> generateData() {
         return Stream.of(
-                Arguments.of(119_999, ""),
-                Arguments.of(120_000, "증정 이벤트: -25,000원")
+                Arguments.of(new Order("초코케이크-7"), ""),
+                Arguments.of(new Order("초코케이크-8"), "증정 이벤트: -25,000원")
         );
     }
 }

@@ -6,10 +6,11 @@ import static christmas.util.Constant.EMPTY;
 
 import christmas.model.Money;
 import christmas.model.date.Date;
+import christmas.model.order.Order;
 
 public class WeekendEvent extends Event {
-    public WeekendEvent(Date date, Money amountDue) {
-        super(date, amountDue);
+    public WeekendEvent(Date date, Order order) {
+        super(date, order);
     }
 
     @Override
@@ -18,11 +19,12 @@ public class WeekendEvent extends Event {
     }
 
     @Override
-    public void applyBenefit(int quantityOfMains) {
+    public void applyBenefit() {
         if (!canDiscount()) {
             return;
         }
 
+        int quantityOfMains = order.countMain();
         discount = new Money(WEEKEND_EVENT_DISCOUNT_UNIT).multiply(quantityOfMains)
                 .signConvert();
     }

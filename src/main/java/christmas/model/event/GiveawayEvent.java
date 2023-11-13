@@ -5,14 +5,14 @@ import static christmas.config.EventConfig.ConfigGiveawayEvent.GIVEAWAY_MENU;
 import static christmas.model.event.EventMsg.GIVEAWAY_EVENT_MSG;
 import static christmas.util.Constant.EMPTY;
 
-import christmas.model.Money;
 import christmas.model.date.Date;
 import christmas.model.menu.Menu;
+import christmas.model.order.Order;
 
 public class GiveawayEvent extends Event {
 
-    public GiveawayEvent(Date date, Money amountDue) {
-        super(date, amountDue);
+    public GiveawayEvent(Date date, Order order) {
+        super(date, order);
     }
 
     @Override
@@ -21,11 +21,12 @@ public class GiveawayEvent extends Event {
     }
 
     private boolean isOverThreshold() {
-        return amountDue.isMore(GIVEAWAY_EVENT_THRESHOLD_AMOUNT_DUE);
+        return order.amountDue()
+                .isMore(GIVEAWAY_EVENT_THRESHOLD_AMOUNT_DUE);
     }
 
     @Override
-    public void applyBenefit(int dummy) {
+    public void applyBenefit() {
         if (!canDiscount()) {
             return;
         }

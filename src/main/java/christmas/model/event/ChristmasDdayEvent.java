@@ -9,10 +9,11 @@ import static christmas.util.Constant.EMPTY;
 
 import christmas.model.Money;
 import christmas.model.date.Date;
+import christmas.model.order.Order;
 
 public class ChristmasDdayEvent extends Event {
-    public ChristmasDdayEvent(Date date, Money amountDue) {
-        super(date, amountDue);
+    public ChristmasDdayEvent(Date date, Order order) {
+        super(date, order);
     }
 
     @Override
@@ -25,13 +26,13 @@ public class ChristmasDdayEvent extends Event {
     }
 
     @Override
-    public void applyBenefit(int date) {
+    public void applyBenefit() {
         if (!canDiscount()) {
             return;
         }
 
         Money standardDiscount = new Money(START_DISCOUNT);
-        Money additionalDiscount = new Money(CHRISTMAS_EVENT_DISCOUNT_UNIT).multiply(date - 1);
+        Money additionalDiscount = new Money(CHRISTMAS_EVENT_DISCOUNT_UNIT).multiply(date.date() - 1);
         this.discount = standardDiscount.plus(additionalDiscount)
                 .signConvert();
     }
