@@ -10,9 +10,9 @@ public enum Day {
     TUESDAY(5, WEEKDAY),
     WEDNESDAY(6, WEEKDAY),
     THURSDAY(0, WEEKDAY),
-    FRIDAY(1, WEEKDAY),
+    FRIDAY(1, WEEKEND),
     SATURDAY(2, WEEKEND),
-    SUNDAY(3, WEEKEND);
+    SUNDAY(3, WEEKDAY);
 
     private final int date;
     private final Week week;

@@ -27,4 +27,8 @@ public record Date(int date) {
     public Day findDay() {
         return Day.from(date);
     }
+
+    public boolean isWeekday() {
+        return findDay().isWeekday();
+    }
 }

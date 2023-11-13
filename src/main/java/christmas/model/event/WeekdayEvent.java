@@ -9,7 +9,7 @@ public class WeekdayEvent extends Event {
 
     @Override
     protected boolean isFitCondition() {
-        return super.isFitCondition();
+        return super.isFitCondition() && date.isWeekday();
     }
 
     @Override
