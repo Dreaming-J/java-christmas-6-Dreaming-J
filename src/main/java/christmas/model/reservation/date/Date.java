@@ -1,11 +1,12 @@
 package christmas.model.reservation.date;
 
+import static christmas.config.DateConfig.CHRISTMAS_DATE;
+import static christmas.config.DateConfig.MAX_DATE;
+import static christmas.config.DateConfig.MIN_DATE;
+
 import christmas.exception.Exception.DateException;
 
 public record Date(int date) {
-    private static final int MIN_DATE = 1;
-    private static final int MAX_DATE = 31;
-
     public Date {
         validate(date);
     }
@@ -34,5 +35,17 @@ public record Date(int date) {
 
     public boolean isWeekend() {
         return findDay().isWeekend();
+    }
+
+    public boolean hasStar() {
+        return isSunday() || isChristmas();
+    }
+
+    private boolean isSunday() {
+        return findDay().isSunday();
+    }
+
+    private boolean isChristmas() {
+        return this.date == CHRISTMAS_DATE;
     }
 }

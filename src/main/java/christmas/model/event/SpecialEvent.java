@@ -10,7 +10,7 @@ public class SpecialEvent extends Event {
 
     @Override
     public boolean canDiscount() {
-        return super.canDiscount();
+        return super.canDiscount() && date.hasStar();
     }
 
     @Override

@@ -36,4 +36,8 @@ public enum Day {
     public boolean isWeekend() {
         return this.week == WEEKEND;
     }
+
+    public boolean isSunday() {
+        return this == SUNDAY;
+    }
 }
