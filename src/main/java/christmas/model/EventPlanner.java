@@ -35,6 +35,10 @@ public class EventPlanner {
                 .toList();
     }
 
+    public Money totalDiscount() {
+        return new Money(0);
+    }
+
     @Override
     public String toString() {
         if (events.isEmpty()) {
