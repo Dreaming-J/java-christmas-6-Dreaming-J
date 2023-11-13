@@ -12,4 +12,6 @@ public class EventConfig {
         public static final int START_DISCOUNT = 1_000;
         public static final int DISCOUNT_UNIT = 100;
     }
+
+    public static final int WEEK_EVENT_DISCOUNT_UNIT = 2_023;
 }
