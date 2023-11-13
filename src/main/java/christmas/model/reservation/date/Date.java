@@ -31,4 +31,8 @@ public record Date(int date) {
     public boolean isWeekday() {
         return findDay().isWeekday();
     }
+
+    public boolean isWeekend() {
+        return findDay().isWeekend();
+    }
 }
