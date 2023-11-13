@@ -28,10 +28,6 @@ public class GiveawayEvent extends Event {
 
     @Override
     public void applyBenefit() {
-        if (!canDiscount()) {
-            return;
-        }
-
         //TODO: 증정품 클래스로 분리하기
         Menu menu = Menu.from(GIVEAWAY_MENU);
         this.discount = menu.getPrice()
