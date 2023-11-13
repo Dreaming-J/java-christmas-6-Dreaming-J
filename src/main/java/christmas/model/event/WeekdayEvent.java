@@ -1,7 +1,7 @@
 package christmas.model.event;
 
 import static christmas.config.EventConfig.COMMA_FORMATTER;
-import static christmas.config.EventConfig.WEEK_EVENT_DISCOUNT_UNIT;
+import static christmas.config.EventConfig.WEEKDAY_EVENT_DISCOUNT_UNIT;
 import static christmas.model.event.EventMsg.WEEKDAY_EVENT_MSG;
 import static christmas.util.Constant.EMPTY;
 
@@ -23,7 +23,7 @@ public class WeekdayEvent extends Event {
             return;
         }
 
-        this.discount = quantityOfDesserts * WEEK_EVENT_DISCOUNT_UNIT;
+        this.discount = quantityOfDesserts * WEEKDAY_EVENT_DISCOUNT_UNIT;
     }
 
     @Override
