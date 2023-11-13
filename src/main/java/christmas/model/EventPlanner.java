@@ -36,7 +36,10 @@ public class EventPlanner {
     }
 
     public Money totalDiscount() {
-        return new Money(0);
+        return events.stream()
+                .map(Event::getDiscount)
+                .reduce(Money::plus)
+                .get();
     }
 
     @Override

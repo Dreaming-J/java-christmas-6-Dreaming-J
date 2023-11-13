@@ -22,6 +22,10 @@ public abstract class Event {
                 .isMore(MIN_AMOUNT_DUE_FOR_EVENT);
     }
 
+    public Money getDiscount() {
+        return discount;
+    }
+
     protected boolean doesNotExistDiscount() {
         return discount.isZero();
     }
