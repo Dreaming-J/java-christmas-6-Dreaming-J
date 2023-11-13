@@ -1,6 +1,7 @@
 package christmas.model.benefit;
 
 import christmas.exception.Exception.BadgeException;
+import christmas.model.Money;
 import java.util.stream.Stream;
 
 public enum Badge {
@@ -17,15 +18,15 @@ public enum Badge {
         this.name = name;
     }
 
-    public static Badge from(int discount) {
+    public static Badge from(Money discount) {
         return Stream.of(values())
                 .filter(badge -> badge.isMoreCondition(discount))
                 .findFirst()
                 .orElseThrow(BadgeException::new);
     }
 
-    private boolean isMoreCondition(int discount) {
-        return discount >= this.threshold;
+    private boolean isMoreCondition(Money discount) {
+        return discount.isMore(threshold);
     }
 
     @Override

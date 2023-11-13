@@ -2,24 +2,26 @@ package christmas.model.event;
 
 import static christmas.config.EventConfig.MIN_AMOUNT_DUE_FOR_EVENT;
 
+import christmas.model.Money;
 import christmas.model.date.Date;
 
 public abstract class Event {
     protected final Date date;
-    protected final int amountDue;
-    protected int discount;
+    protected final Money amountDue;
+    protected Money discount;
 
-    public Event(Date date, int amountDue) {
+    public Event(Date date, Money amountDue) {
         this.date = date;
         this.amountDue = amountDue;
+        this.discount = new Money(0);
     }
 
     public boolean canDiscount() {
-        return this.amountDue >= MIN_AMOUNT_DUE_FOR_EVENT;
+        return amountDue.isMore(MIN_AMOUNT_DUE_FOR_EVENT);
     }
 
     protected boolean doesNotExistDiscount() {
-        return this.discount == 0;
+        return discount.isZero();
     }
 
     public abstract void applyBenefit(int applicableTarget);

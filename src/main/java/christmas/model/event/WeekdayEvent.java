@@ -2,13 +2,13 @@ package christmas.model.event;
 
 import static christmas.config.EventConfig.WEEKDAY_EVENT_DISCOUNT_UNIT;
 import static christmas.model.event.EventMsg.WEEKDAY_EVENT_MSG;
-import static christmas.util.Constant.COMMA_FORMATTER;
 import static christmas.util.Constant.EMPTY;
 
+import christmas.model.Money;
 import christmas.model.date.Date;
 
 public class WeekdayEvent extends Event {
-    public WeekdayEvent(Date date, int amountDue) {
+    public WeekdayEvent(Date date, Money amountDue) {
         super(date, amountDue);
     }
 
@@ -23,7 +23,8 @@ public class WeekdayEvent extends Event {
             return;
         }
 
-        this.discount = quantityOfDesserts * WEEKDAY_EVENT_DISCOUNT_UNIT;
+        discount = new Money(WEEKDAY_EVENT_DISCOUNT_UNIT).multiply(quantityOfDesserts)
+                .signConvert();
     }
 
     @Override
@@ -32,6 +33,6 @@ public class WeekdayEvent extends Event {
             return EMPTY;
         }
 
-        return String.format(WEEKDAY_EVENT_MSG.toString(), COMMA_FORMATTER.format(this.discount));
+        return String.format(WEEKDAY_EVENT_MSG.toString(), discount);
     }
 }

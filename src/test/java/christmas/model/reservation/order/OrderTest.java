@@ -35,7 +35,7 @@ public class OrderTest {
     @Test
     void 총주문_금액_계산_테스트() {
         Order order = new Order("양송이수프-2,티본스테이크-1,초코케이크-2,레드와인-1");
-        assertEquals(order.amountDue(), 157_000);
+        assertEquals(order.amountDue().toString(), "157,000원");
     }
 
     @Test

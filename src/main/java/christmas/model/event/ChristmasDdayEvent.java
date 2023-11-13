@@ -5,13 +5,13 @@ import static christmas.config.EventConfig.ConfigChristmasDdayEvent.END_DATE;
 import static christmas.config.EventConfig.ConfigChristmasDdayEvent.START_DATE;
 import static christmas.config.EventConfig.ConfigChristmasDdayEvent.START_DISCOUNT;
 import static christmas.model.event.EventMsg.CHRISTMAS_DDAY_EVENT_MSG;
-import static christmas.util.Constant.COMMA_FORMATTER;
 import static christmas.util.Constant.EMPTY;
 
+import christmas.model.Money;
 import christmas.model.date.Date;
 
 public class ChristmasDdayEvent extends Event {
-    public ChristmasDdayEvent(Date date, int amountDue) {
+    public ChristmasDdayEvent(Date date, Money amountDue) {
         super(date, amountDue);
     }
 
@@ -30,8 +30,10 @@ public class ChristmasDdayEvent extends Event {
             return;
         }
 
-        this.discount = START_DISCOUNT +
-                CHRISTMAS_EVENT_DISCOUNT_UNIT * (date - 1);
+        Money standardDiscount = new Money(START_DISCOUNT);
+        Money additionalDiscount = new Money(CHRISTMAS_EVENT_DISCOUNT_UNIT).multiply(date - 1);
+        this.discount = standardDiscount.plus(additionalDiscount)
+                .signConvert();
     }
 
     @Override
@@ -40,6 +42,6 @@ public class ChristmasDdayEvent extends Event {
             return EMPTY;
         }
 
-        return String.format(CHRISTMAS_DDAY_EVENT_MSG.toString(), COMMA_FORMATTER.format(this.discount));
+        return String.format(CHRISTMAS_DDAY_EVENT_MSG.toString(), discount);
     }
 }

@@ -31,13 +31,13 @@ public class DayTest {
 
     @Test
     void 평일_테스트() {
-        assertTrue(Day.from(1)
+        assertTrue(Day.from(7)
                 .isWeekday());
     }
 
     @Test
     void 주말_테스트() {
-        assertTrue(Day.from(24)
+        assertTrue(Day.from(23)
                 .isWeekend());
     }
 }

@@ -1,6 +1,7 @@
 package christmas.model.menu;
 
 import christmas.exception.Exception.OrderException;
+import christmas.model.Money;
 import java.util.Objects;
 import java.util.stream.Stream;
 
@@ -20,12 +21,12 @@ public enum Menu {
 
     private final Category category;
     private final String food;
-    private final int price;
+    private final Money price;
 
     Menu(Category category, String food, int price) {
         this.category = category;
         this.food = food;
-        this.price = price;
+        this.price = new Money(price);
     }
 
     public static Menu from(String food) {
@@ -39,7 +40,7 @@ public enum Menu {
         return this.food;
     }
 
-    public int getPrice() {
+    public Money getPrice() {
         return this.price;
     }
 

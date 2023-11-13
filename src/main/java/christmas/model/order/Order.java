@@ -6,6 +6,7 @@ import static christmas.model.order.OrderMapGenerator.createOrderMap;
 import static christmas.util.Constant.LINE_BREAK;
 
 import christmas.exception.Exception.OrderException;
+import christmas.model.Money;
 import christmas.model.menu.Menu;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -29,11 +30,13 @@ public class Order {
         return !Pattern.matches(ORDER_REGEX, orders);
     }
 
-    public int amountDue() {
+    public Money amountDue() {
         return this.order.keySet()
                 .stream()
-                .mapToInt(menu -> menu.getPrice() * getQuantity(menu))
-                .sum();
+                .map(menu -> menu.getPrice()
+                        .multiply(getQuantity(menu)))
+                .reduce(Money::plus)
+                .get();
     }
 
     private int getQuantity(Menu menu) {

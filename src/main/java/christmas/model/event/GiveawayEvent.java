@@ -3,15 +3,15 @@ package christmas.model.event;
 import static christmas.config.EventConfig.ConfigGiveawayEvent.GIVEAWAY_EVENT_THRESHOLD_AMOUNT_DUE;
 import static christmas.config.EventConfig.ConfigGiveawayEvent.GIVEAWAY_MENU;
 import static christmas.model.event.EventMsg.GIVEAWAY_EVENT_MSG;
-import static christmas.util.Constant.COMMA_FORMATTER;
 import static christmas.util.Constant.EMPTY;
 
+import christmas.model.Money;
 import christmas.model.date.Date;
 import christmas.model.menu.Menu;
 
 public class GiveawayEvent extends Event {
 
-    public GiveawayEvent(Date date, int amountDue) {
+    public GiveawayEvent(Date date, Money amountDue) {
         super(date, amountDue);
     }
 
@@ -21,7 +21,7 @@ public class GiveawayEvent extends Event {
     }
 
     private boolean isOverThreshold() {
-        return amountDue >= GIVEAWAY_EVENT_THRESHOLD_AMOUNT_DUE;
+        return amountDue.isMore(GIVEAWAY_EVENT_THRESHOLD_AMOUNT_DUE);
     }
 
     @Override
@@ -32,7 +32,8 @@ public class GiveawayEvent extends Event {
 
         //TODO: 증정품 클래스로 분리하기
         Menu menu = Menu.from(GIVEAWAY_MENU);
-        this.discount = menu.getPrice();
+        this.discount = menu.getPrice()
+                .signConvert();
     }
 
     @Override
@@ -41,6 +42,6 @@ public class GiveawayEvent extends Event {
             return EMPTY;
         }
 
-        return String.format(GIVEAWAY_EVENT_MSG.toString(), COMMA_FORMATTER.format(this.discount));
+        return String.format(GIVEAWAY_EVENT_MSG.toString(), discount);
     }
 }

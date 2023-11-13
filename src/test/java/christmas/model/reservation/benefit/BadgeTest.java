@@ -2,6 +2,7 @@ package christmas.model.reservation.benefit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import christmas.model.Money;
 import christmas.model.benefit.Badge;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,7 +13,7 @@ public class BadgeTest {
     @ParameterizedTest(name = "[{index}] 할인금액: {0}증정 배지: {1}")
     @MethodSource("generateData")
     void 이벤트_배지_부여_테스트(int discount, Badge badge) {
-        assertEquals(Badge.from(discount), badge);
+        assertEquals(Badge.from(new Money(discount)), badge);
     }
 
     static Stream<Arguments> generateData() {
