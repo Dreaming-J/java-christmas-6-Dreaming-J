@@ -49,4 +49,15 @@ public class EventTest {
             );
         }
     }
+
+    @DisplayName("평일 할인")
+    @Nested
+    class WeekdayEventTest {
+        @ParameterizedTest(name = "[{index}] 날짜:{1}, 결과:{2}")
+        @CsvSource(value = {"1,10_000,true", "2,10_000,false", "3,10_000,false"})
+        void 조건_테스트(int date, int amountDue, boolean isFit) {
+            Event weekdayEvent = new WeekdayEvent(new Date(date), amountDue);
+            assertEquals(weekdayEvent.isFitCondition(), isFit);
+        }
+    }
 }
