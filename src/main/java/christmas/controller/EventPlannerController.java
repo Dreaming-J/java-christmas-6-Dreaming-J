@@ -37,5 +37,6 @@ public class EventPlannerController extends RepeatModule {
 
     private void printReserve() {
         outputView.printDate(reservation.date());
+        outputView.printOrder(reservation.order());
     }
 }
