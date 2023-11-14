@@ -3,6 +3,7 @@ package christmas.view;
 import static christmas.util.Constant.LINE_BREAK;
 import static christmas.view.Message.PRINT_AMOUNT_DUE_TITLE;
 import static christmas.view.Message.PRINT_BENEFIT_TITLE;
+import static christmas.view.Message.PRINT_DISCOUNTED_AMOUNT_TITLE;
 import static christmas.view.Message.PRINT_DISCOUNT_TITLE;
 import static christmas.view.Message.PRINT_GIVEAWAY_TITLE;
 import static christmas.view.Message.PRINT_ORDER_MENU_TITLE;
@@ -41,6 +42,10 @@ public class OutputView {
 
     public void printDiscount(Money discount) {
         printMsg(PRINT_DISCOUNT_TITLE, discount);
+    }
+
+    public void printDiscountedAmount(Money discountedAmount) {
+        printMsg(PRINT_DISCOUNTED_AMOUNT_TITLE, discountedAmount);
     }
 
     private <T> void printMsg(Message title, T object) {
