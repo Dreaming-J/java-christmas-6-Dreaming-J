@@ -36,10 +36,6 @@ public enum Menu {
                 .orElseThrow(OrderException::new);
     }
 
-    public String getFood() {
-        return this.food;
-    }
-
     public Money getPrice() {
         return this.price;
     }
@@ -57,5 +53,10 @@ public enum Menu {
     public boolean isDrink() {
         return this.category
                 .isDrink();
+    }
+
+    @Override
+    public String toString() {
+        return this.food;
     }
 }

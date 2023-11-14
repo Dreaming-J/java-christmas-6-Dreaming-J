@@ -64,7 +64,7 @@ public class Order {
     public String toString() {
         return this.order.keySet()
                 .stream()
-                .map(menu -> String.format(ORDER_STRING_FORMAT, menu.getFood(), order.get(menu).number()))
+                .map(menu -> String.format(ORDER_STRING_FORMAT, menu, order.get(menu)))
                 .collect(Collectors.joining(LINE_BREAK));
     }
 }

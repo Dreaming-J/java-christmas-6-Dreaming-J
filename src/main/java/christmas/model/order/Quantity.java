@@ -18,4 +18,9 @@ public record Quantity(int number) {
     private boolean isUnderMin(int number) {
         return number < MIN_QUNTITY;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(number);
+    }
 }
