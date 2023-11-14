@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.dto.Reservation;
+import christmas.model.EventPlanner;
 import christmas.model.date.Date;
 import christmas.model.order.Order;
 import christmas.module.RepeatModule;
@@ -21,6 +22,7 @@ public class EventPlannerController extends RepeatModule {
         outputView.printStartPlanner();
         reserve();
         showReserve();
+        previewEvent();
     }
 
     private void reserve() {
@@ -39,5 +41,10 @@ public class EventPlannerController extends RepeatModule {
         outputView.printDate(reservation.date());
         outputView.printOrder(reservation.order());
         outputView.printAmountDue(reservation.order().amountDue());
+    }
+
+    private void previewEvent() {
+        EventPlanner eventPlanner = new EventPlanner(reservation.date(), reservation.order());
+        outputView.printGiveaway(eventPlanner.getGiveaway());
     }
 }
