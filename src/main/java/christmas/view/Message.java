@@ -9,7 +9,8 @@ public enum Message {
     PRINT_GIVEAWAY_TITLE("<증정 메뉴>"),
     PRINT_BENEFIT_TITLE("<혜택 내역>"),
     PRINT_DISCOUNT_TITLE("<총혜택 금액>"),
-    PRINT_DISCOUNTED_AMOUNT_TITLE("<할인 후 예상 결제 금액>");
+    PRINT_DISCOUNTED_AMOUNT_TITLE("<할인 후 예상 결제 금액>"),
+    PRINT_BADGE_TITLE("<12월 이벤트 배지>");
 
     private final String message;
 
