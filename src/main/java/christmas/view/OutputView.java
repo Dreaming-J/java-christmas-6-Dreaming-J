@@ -25,6 +25,6 @@ public class OutputView {
 
     public void printAmountDue(Money amountDue) {
         System.out.println(PRINT_AMOUNT_DUE_TITLE);
-        System.out.println(amountDue);
+        System.out.println(amountDue + LINE_BREAK);
     }
 }

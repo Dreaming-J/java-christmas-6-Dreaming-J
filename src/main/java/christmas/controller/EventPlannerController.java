@@ -20,7 +20,7 @@ public class EventPlannerController extends RepeatModule {
     public void start() {
         outputView.printStartPlanner();
         reserve();
-        printReserve();
+        showReserve();
     }
 
     private void reserve() {
@@ -35,8 +35,9 @@ public class EventPlannerController extends RepeatModule {
         reservation = new Reservation(reserveDate, reserveOrder);
     }
 
-    private void printReserve() {
+    private void showReserve() {
         outputView.printDate(reservation.date());
         outputView.printOrder(reservation.order());
+        outputView.printAmountDue(reservation.order().amountDue());
     }
 }
