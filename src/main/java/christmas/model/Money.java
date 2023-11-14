@@ -7,6 +7,10 @@ import java.text.DecimalFormat;
 public record Money(int money) {
     private static final DecimalFormat COMMA_FORMATTER = new DecimalFormat("###,###원;-###,###원");
 
+    public static Money ZERO() {
+        return new Money(0);
+    }
+
     public Money plus(Money money) {
         return new Money(money.plus(this.money));
     }

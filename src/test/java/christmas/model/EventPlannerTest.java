@@ -12,13 +12,13 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class EventPlannerTest {
     @ParameterizedTest(name = "[{index}] {2}")
-    @MethodSource("generateData")
+    @MethodSource("generateData1")
     void 이벤트_혜택_내용_테스트(Date date, Order order, String actual) {
         EventPlanner eventPlanner = new EventPlanner(date, order);
         assertEquals(eventPlanner.toString(), actual);
     }
 
-    private static Stream<Arguments> generateData() {
+    private static Stream<Arguments> generateData1() {
         return Stream.of(
                 Arguments.of(new Date(5),
                         new Order("타파스-1,제로콜라-1"),
@@ -53,5 +53,21 @@ public class EventPlannerTest {
         EventPlanner eventPlanner = new EventPlanner(date, order);
         Money payment = order.amountDue().plus(eventPlanner.totalDiscountWithoutGiveaway());
         assertEquals(payment, new Money(135_754));
+    }
+
+    @ParameterizedTest
+    @MethodSource("generateData2")
+    void 이벤트_배지_부여_테스트(Date date, Order order, Badge badge) {
+        EventPlanner eventPlanner = new EventPlanner(date, order);
+        assertEquals(eventPlanner.createBadge(), badge);
+    }
+
+    private static Stream<Arguments> generateData2() {
+        return Stream.of(
+                Arguments.of(new Date(5), new Order("타파스-1,제로콜라-1"), Badge.NOTHING),
+                Arguments.of(new Date(5), new Order("아이스크림-2"), Badge.STAR),
+                Arguments.of(new Date(25), new Order("크리스마스파스타-1,아이스크림-4"), Badge.TREE),
+                Arguments.of(new Date(3), new Order("티본스테이크-3"), Badge.SANTA)
+        );
     }
 }

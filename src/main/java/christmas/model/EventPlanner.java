@@ -22,7 +22,7 @@ public class EventPlanner {
         return events.stream()
                 .map(Event::getDiscount)
                 .reduce(Money::plus)
-                .get();
+                .orElse(Money.ZERO());
     }
 
     public Money totalDiscountWithoutGiveaway() {
@@ -30,7 +30,11 @@ public class EventPlanner {
                 .filter(Event::isDiscountEvent)
                 .map(Event::getDiscount)
                 .reduce(Money::plus)
-                .get();
+                .orElse(Money.ZERO());
+    }
+
+    public Badge createBadge() {
+        return Badge.NOTHING;
     }
 
     @Override
