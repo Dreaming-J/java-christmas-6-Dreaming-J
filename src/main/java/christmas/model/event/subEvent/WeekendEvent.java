@@ -26,6 +26,10 @@ public class WeekendEvent extends Event {
 
     @Override
     public void applyBenefit() {
+        if (!canDiscount()) {
+            return;
+        }
+
         int quantityOfMains = order.countMain();
         discount = new Money(WEEKEND_EVENT_DISCOUNT_UNIT).multiply(quantityOfMains)
                 .signConvert();

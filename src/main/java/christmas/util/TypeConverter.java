@@ -1,6 +1,6 @@
 package christmas.util;
 
-import christmas.exception.Exception.OrderException;
+import christmas.exception.Exception.DateException;
 
 public class TypeConverter {
 
@@ -10,7 +10,7 @@ public class TypeConverter {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            throw new OrderException();
+            throw new DateException();
         }
     }
 

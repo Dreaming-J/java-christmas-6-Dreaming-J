@@ -36,6 +36,10 @@ public class GiveawayEvent extends Event {
 
     @Override
     public void applyBenefit() {
+        if (!canDiscount()) {
+            return;
+        }
+
         giveaway = new Giveaway(Menu.from(GIVEAWAY_MENU), new Quantity(1));
         this.discount = giveaway.getMenu()
                 .getPrice()
