@@ -15,7 +15,7 @@ public class WeekendEventTest {
     @ParameterizedTest(name = "[{index}] 날짜:{0}, 결과:{1}")
     @CsvSource(value = {"1,true", "2,true", "3,false", "4,false", "5,false", "6,false", "7,false"})
     void 조건_테스트(int date, boolean isFit) {
-        Event weekendEvent = new WeekendEvent(new Date(date), new Order("아이스크림-2"));
+        Event weekendEvent = new WeekendEvent(new Date(date), new Order("티본스테이크-2"));
         assertEquals(weekendEvent.canDiscount(), isFit);
     }
 

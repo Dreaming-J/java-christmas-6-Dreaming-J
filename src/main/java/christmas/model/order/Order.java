@@ -30,12 +30,24 @@ public class Order {
                 .number();
     }
 
+    public boolean hasDessert() {
+        return this.order.keySet()
+                .stream()
+                .anyMatch(Menu::isDessert);
+    }
+
     public int countDessert() {
         return this.order.keySet()
                 .stream()
                 .filter(Menu::isDessert)
                 .mapToInt(this::getQuantity)
                 .sum();
+    }
+
+    public boolean hasMain() {
+        return this.order.keySet()
+                .stream()
+                .anyMatch(Menu::isMain);
     }
 
     public int countMain() {

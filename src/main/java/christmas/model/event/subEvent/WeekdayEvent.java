@@ -16,7 +16,7 @@ public class WeekdayEvent extends Event {
 
     @Override
     public boolean canDiscount() {
-        return super.canDiscount() && date.isWeekday();
+        return super.canDiscount() && date.isWeekday() && order.hasDessert();
     }
 
     @Override
