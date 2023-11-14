@@ -5,12 +5,15 @@ import static christmas.config.EventConfig.ConfigGiveawayEvent.GIVEAWAY_MENU;
 import static christmas.model.event.EventMsg.GIVEAWAY_EVENT_MSG;
 import static christmas.util.Constant.EMPTY;
 
+import christmas.dto.Giveaway;
 import christmas.model.date.Date;
 import christmas.model.event.Event;
 import christmas.model.menu.Menu;
 import christmas.model.order.Order;
+import christmas.model.order.Quantity;
 
 public class GiveawayEvent extends Event {
+    private Giveaway giveaway;
 
     public GiveawayEvent(Date date, Order order) {
         super(date, order);
@@ -27,11 +30,20 @@ public class GiveawayEvent extends Event {
     }
 
     @Override
+    public boolean isGiveawayEvent() {
+        return true;
+    }
+
+    @Override
     public void applyBenefit() {
-        //TODO: 증정품 클래스로 분리하기
-        Menu menu = Menu.from(GIVEAWAY_MENU);
-        this.discount = menu.getPrice()
+        giveaway = new Giveaway(Menu.from(GIVEAWAY_MENU), new Quantity(1));
+        this.discount = giveaway.getMenu()
+                .getPrice()
                 .signConvert();
+    }
+
+    public Giveaway getGiveaway() {
+        return giveaway;
     }
 
     @Override

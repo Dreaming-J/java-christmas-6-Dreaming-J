@@ -30,6 +30,10 @@ public abstract class Event {
         return false;
     }
 
+    public boolean isGiveawayEvent() {
+        return false;
+    }
+
     protected boolean doesNotExistDiscount() {
         return discount.isZero();
     }

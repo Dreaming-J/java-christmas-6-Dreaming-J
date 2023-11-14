@@ -4,8 +4,10 @@ import static christmas.model.event.EventListGenerator.init;
 import static christmas.util.Constant.LINE_BREAK;
 import static christmas.util.Constant.NOTHING;
 
+import christmas.dto.Giveaway;
 import christmas.model.date.Date;
 import christmas.model.event.Event;
+import christmas.model.event.subEvent.GiveawayEvent;
 import christmas.model.order.Order;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +33,24 @@ public class EventPlanner {
                 .map(Event::getDiscount)
                 .reduce(Money::plus)
                 .orElse(Money.ZERO());
+    }
+
+    public Giveaway getGiveaway() {
+        if (hasNotGiveawayEvent()) {
+            return new Giveaway();
+        }
+
+        return events.stream()
+                .filter(Event::isGiveawayEvent)
+                .findFirst()
+                .map(event -> (GiveawayEvent) event)
+                .get()
+                .getGiveaway();
+    }
+
+    private boolean hasNotGiveawayEvent() {
+        return events.stream()
+                .noneMatch(Event::isGiveawayEvent);
     }
 
     public Badge createBadge() {
