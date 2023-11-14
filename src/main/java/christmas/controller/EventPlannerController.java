@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.dto.Reservation;
 import christmas.model.date.Date;
 import christmas.model.order.Order;
 import christmas.module.RepeatModule;
@@ -9,6 +10,7 @@ import christmas.view.OutputView;
 public class EventPlannerController extends RepeatModule {
     private final InputView inputView;
     private final OutputView outputView;
+    private Reservation reservation;
 
     public EventPlannerController() {
         inputView = new InputView();
@@ -18,6 +20,7 @@ public class EventPlannerController extends RepeatModule {
     public void start() {
         outputView.printStartPlanner();
         reserve();
+        printReserve();
     }
 
     private void reserve() {
@@ -29,5 +32,10 @@ public class EventPlannerController extends RepeatModule {
             String order = inputView.readOrder();
             return new Order(order);
         });
+        reservation = new Reservation(reserveDate, reserveOrder);
+    }
+
+    private void printReserve() {
+        outputView.printDate(reservation.date());
     }
 }
