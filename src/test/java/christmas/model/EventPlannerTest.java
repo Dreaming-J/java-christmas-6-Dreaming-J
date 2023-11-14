@@ -43,6 +43,15 @@ public class EventPlannerTest {
         Date date = new Date(3);
         Order order = new Order("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
         EventPlanner eventPlanner = new EventPlanner(date, order);
-        assertEquals(eventPlanner.totalDiscount().toString(), "-31,246원");
+        assertEquals(eventPlanner.totalDiscountWithGiveaway().toString(), "-31,246원");
+    }
+
+    @Test
+    void 할인_후_예상_결제_금액_계산_테스트() {
+        Date date = new Date(3);
+        Order order = new Order("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+        EventPlanner eventPlanner = new EventPlanner(date, order);
+        Money payment = order.amountDue().plus(eventPlanner.totalDiscountWithoutGiveaway());
+        assertEquals(payment, new Money(135_754));
     }
 }
