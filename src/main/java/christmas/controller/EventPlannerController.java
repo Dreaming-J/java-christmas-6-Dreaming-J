@@ -53,5 +53,6 @@ public class EventPlannerController extends RepeatModule {
                 .amountDue()
                 .plus(eventPlanner.totalDiscountWithoutGiveaway());
         outputView.printDiscountedAmount(discountedAmount);
+        outputView.printBadge(eventPlanner.createBadge());
     }
 }
