@@ -34,7 +34,7 @@ public class EventPlanner {
     }
 
     public Badge createBadge() {
-        return Badge.NOTHING;
+        return Badge.from(totalDiscountWithGiveaway().signConvert());
     }
 
     @Override
