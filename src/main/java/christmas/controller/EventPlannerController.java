@@ -46,5 +46,6 @@ public class EventPlannerController extends RepeatModule {
     private void previewEvent() {
         EventPlanner eventPlanner = new EventPlanner(reservation.date(), reservation.order());
         outputView.printGiveaway(eventPlanner.getGiveaway());
+        outputView.printBenefit(eventPlanner);
     }
 }
