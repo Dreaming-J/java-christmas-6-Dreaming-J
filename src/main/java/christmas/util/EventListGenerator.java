@@ -1,6 +1,7 @@
-package christmas.model.event;
+package christmas.util;
 
 import christmas.model.date.Date;
+import christmas.model.event.Event;
 import christmas.model.event.subEvent.ChristmasDdayEvent;
 import christmas.model.event.subEvent.GiveawayEvent;
 import christmas.model.event.subEvent.SpecialEvent;
@@ -18,6 +19,7 @@ public class EventListGenerator {
         events.add(new WeekendEvent(date, order));
         events.add(new SpecialEvent(date, order));
         events.add(new GiveawayEvent(date, order));
+
         return events.stream()
                 .filter(Event::canDiscount)
                 .toList();

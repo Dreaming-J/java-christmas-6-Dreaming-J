@@ -1,8 +1,8 @@
 package christmas.model.order;
 
 import static christmas.config.OrderConfig.ORDER_STRING_FORMAT;
-import static christmas.model.order.OrderMapGenerator.createOrderMap;
 import static christmas.util.Constant.LINE_BREAK;
+import static christmas.util.OrderMapGenerator.createOrderMap;
 
 import christmas.model.Money;
 import christmas.model.menu.Menu;

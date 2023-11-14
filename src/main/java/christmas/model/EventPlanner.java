@@ -1,8 +1,8 @@
 package christmas.model;
 
-import static christmas.model.event.EventListGenerator.init;
 import static christmas.util.Constant.LINE_BREAK;
 import static christmas.util.Constant.NOTHING;
+import static christmas.util.EventListGenerator.init;
 
 import christmas.dto.Giveaway;
 import christmas.model.date.Date;
