@@ -2,6 +2,7 @@ package christmas.controller;
 
 import christmas.dto.Reservation;
 import christmas.model.EventPlanner;
+import christmas.model.Money;
 import christmas.model.date.Date;
 import christmas.model.order.Order;
 import christmas.module.RepeatModule;
@@ -48,5 +49,9 @@ public class EventPlannerController extends RepeatModule {
         outputView.printGiveaway(eventPlanner.getGiveaway());
         outputView.printBenefit(eventPlanner);
         outputView.printDiscount(eventPlanner.totalDiscountWithGiveaway());
+        Money discountedAmount = reservation.order()
+                .amountDue()
+                .plus(eventPlanner.totalDiscountWithoutGiveaway());
+        outputView.printDiscountedAmount(discountedAmount);
     }
 }
