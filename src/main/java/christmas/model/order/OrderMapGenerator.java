@@ -1,6 +1,7 @@
 package christmas.model.order;
 
 import static christmas.config.OrderConfig.MAX_TOTAL_QUANTITY;
+import static christmas.config.OrderConfig.ORDER_REGEX;
 import static christmas.util.Constant.COMMA;
 import static christmas.util.Constant.DASH;
 
@@ -9,11 +10,13 @@ import christmas.model.menu.Menu;
 import christmas.util.TypeConverter;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class OrderMapGenerator {
     public static Map<Menu, Quantity> createOrderMap(String orders) {
+        validateRegex(orders);
         Map<Menu, Quantity> orderMap = Stream.of(orders.split(COMMA))
                 .map(order -> order.split(DASH))
                 .collect(Collectors
@@ -25,6 +28,16 @@ public class OrderMapGenerator {
                                 () -> new EnumMap<>(Menu.class)));
         validateOrderMap(orderMap);
         return orderMap;
+    }
+
+    private static void validateRegex(String orders) {
+        if (isNotRegex(orders)) {
+            throw new OrderException();
+        }
+    }
+
+    private static boolean isNotRegex(String orders) {
+        return !Pattern.matches(ORDER_REGEX, orders);
     }
 
     private static void validateOrderMap(Map<Menu, Quantity> orderMap) {

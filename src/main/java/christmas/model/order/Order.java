@@ -1,33 +1,19 @@
 package christmas.model.order;
 
-import static christmas.config.OrderConfig.ORDER_REGEX;
 import static christmas.config.OrderConfig.ORDER_STRING_FORMAT;
 import static christmas.model.order.OrderMapGenerator.createOrderMap;
 import static christmas.util.Constant.LINE_BREAK;
 
-import christmas.exception.Exception.OrderException;
 import christmas.model.Money;
 import christmas.model.menu.Menu;
 import java.util.Map;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Order {
     private final Map<Menu, Quantity> order;
 
     public Order(String orders) {
-        validateRegex(orders);
         this.order = createOrderMap(orders);
-    }
-
-    private void validateRegex(String orders) {
-        if (isNotRegex(orders)) {
-            throw new OrderException();
-        }
-    }
-
-    private boolean isNotRegex(String orders) {
-        return !Pattern.matches(ORDER_REGEX, orders);
     }
 
     public Money amountDue() {
