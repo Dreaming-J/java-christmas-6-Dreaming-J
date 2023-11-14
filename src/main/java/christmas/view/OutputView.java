@@ -2,11 +2,13 @@ package christmas.view;
 
 import static christmas.util.Constant.LINE_BREAK;
 import static christmas.view.Message.PRINT_AMOUNT_DUE_TITLE;
+import static christmas.view.Message.PRINT_BENEFIT_TITLE;
 import static christmas.view.Message.PRINT_GIVEAWAY_TITLE;
 import static christmas.view.Message.PRINT_ORDER_MENU_TITLE;
 import static christmas.view.Message.PRINT_START_PLANNER_MSG;
 
 import christmas.dto.Giveaway;
+import christmas.model.EventPlanner;
 import christmas.model.Money;
 import christmas.model.date.Date;
 import christmas.model.order.Order;
@@ -30,6 +32,10 @@ public class OutputView {
 
     public void printGiveaway(Giveaway giveaway) {
         printMsg(PRINT_GIVEAWAY_TITLE, giveaway);
+    }
+
+    public void printBenefit(EventPlanner eventPlanner) {
+        printMsg(PRINT_BENEFIT_TITLE, eventPlanner);
     }
 
     private <T> void printMsg(Message title, T object) {

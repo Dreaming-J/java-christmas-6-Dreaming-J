@@ -6,7 +6,8 @@ public enum Message {
     PRINT_START_PLANNER_MSG("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다."),
     PRINT_ORDER_MENU_TITLE("<주문 메뉴>"),
     PRINT_AMOUNT_DUE_TITLE("<할인 전 총주문 금액>"),
-    PRINT_GIVEAWAY_TITLE("<증정 메뉴>");
+    PRINT_GIVEAWAY_TITLE("<증정 메뉴>"),
+    PRINT_BENEFIT_TITLE("<혜택 내역>");
 
     private final String message;
 
