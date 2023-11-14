@@ -20,6 +20,11 @@ public class WeekdayEvent extends Event {
     }
 
     @Override
+    public boolean isDiscountEvent() {
+        return true;
+    }
+
+    @Override
     public void applyBenefit() {
         int quantityOfDesserts = order.countDessert();
         discount = new Money(WEEKDAY_EVENT_DISCOUNT_UNIT).multiply(quantityOfDesserts)

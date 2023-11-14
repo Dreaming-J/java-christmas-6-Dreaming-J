@@ -20,6 +20,11 @@ public class SpecialEvent extends Event {
     }
 
     @Override
+    public boolean isDiscountEvent() {
+        return true;
+    }
+
+    @Override
     public void applyBenefit() {
         discount = new Money(SPECIAL_EVENT_DISCOUNT).signConvert();
     }

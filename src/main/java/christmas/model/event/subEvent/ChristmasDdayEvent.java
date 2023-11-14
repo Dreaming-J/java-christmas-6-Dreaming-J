@@ -27,6 +27,11 @@ public class ChristmasDdayEvent extends Event {
     }
 
     @Override
+    public boolean isDiscountEvent() {
+        return true;
+    }
+
+    @Override
     public void applyBenefit() {
         Money standardDiscount = new Money(START_DISCOUNT);
         Money additionalDiscount = new Money(CHRISTMAS_EVENT_DISCOUNT_UNIT).multiply(date.date() - 1);

@@ -26,6 +26,10 @@ public abstract class Event {
         return discount;
     }
 
+    public boolean isDiscountEvent() {
+        return false;
+    }
+
     protected boolean doesNotExistDiscount() {
         return discount.isZero();
     }

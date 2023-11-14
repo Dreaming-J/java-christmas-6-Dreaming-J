@@ -18,8 +18,16 @@ public class EventPlanner {
         events.forEach(Event::applyBenefit);
     }
 
-    public Money totalDiscount() {
+    public Money totalDiscountWithGiveaway() {
         return events.stream()
+                .map(Event::getDiscount)
+                .reduce(Money::plus)
+                .get();
+    }
+
+    public Money totalDiscountWithoutGiveaway() {
+        return events.stream()
+                .filter(Event::isDiscountEvent)
                 .map(Event::getDiscount)
                 .reduce(Money::plus)
                 .get();
