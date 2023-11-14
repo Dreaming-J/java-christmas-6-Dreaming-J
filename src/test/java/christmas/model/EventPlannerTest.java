@@ -11,6 +11,14 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class EventPlannerTest {
+    @Test
+    void 증정품_출력_테스트() {
+        Date date = new Date(3);
+        Order order = new Order("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
+        EventPlanner eventPlanner = new EventPlanner(date, order);
+        assertEquals(eventPlanner.getGiveaway().toString(), "샴페인 1개");
+    }
+
     @ParameterizedTest(name = "[{index}] {2}")
     @MethodSource("generateData1")
     void 이벤트_혜택_내용_테스트(Date date, Order order, String actual) {
