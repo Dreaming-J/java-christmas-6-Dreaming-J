@@ -1,9 +1,10 @@
-package christmas.model.order;
+package christmas.model;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import christmas.exception.Exception.OrderException;
+import christmas.model.order.Order;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
