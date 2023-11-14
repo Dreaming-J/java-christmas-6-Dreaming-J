@@ -3,6 +3,7 @@ package christmas.view;
 import static christmas.util.Constant.LINE_BREAK;
 import static christmas.view.Message.PRINT_AMOUNT_DUE_TITLE;
 import static christmas.view.Message.PRINT_BENEFIT_TITLE;
+import static christmas.view.Message.PRINT_DISCOUNT_TITLE;
 import static christmas.view.Message.PRINT_GIVEAWAY_TITLE;
 import static christmas.view.Message.PRINT_ORDER_MENU_TITLE;
 import static christmas.view.Message.PRINT_START_PLANNER_MSG;
@@ -36,6 +37,10 @@ public class OutputView {
 
     public void printBenefit(EventPlanner eventPlanner) {
         printMsg(PRINT_BENEFIT_TITLE, eventPlanner);
+    }
+
+    public void printDiscount(Money discount) {
+        printMsg(PRINT_DISCOUNT_TITLE, discount);
     }
 
     private <T> void printMsg(Message title, T object) {
