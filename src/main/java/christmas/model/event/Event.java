@@ -2,6 +2,7 @@ package christmas.model.event;
 
 import static christmas.config.EventConfig.MIN_AMOUNT_DUE_FOR_EVENT;
 
+import christmas.dto.Giveaway;
 import christmas.model.Money;
 import christmas.model.date.Date;
 import christmas.model.order.Order;
@@ -26,12 +27,8 @@ public abstract class Event {
         return discount;
     }
 
-    public boolean isDiscountEvent() {
-        return false;
-    }
-
-    public boolean isGiveawayEvent() {
-        return false;
+    public Giveaway getGiveaway() {
+        return new Giveaway();
     }
 
     protected boolean doesNotExistDiscount() {

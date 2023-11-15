@@ -20,11 +20,6 @@ public class WeekendEvent extends Event {
     }
 
     @Override
-    public boolean isDiscountEvent() {
-        return true;
-    }
-
-    @Override
     public void applyBenefit() {
         if (!canDiscount()) {
             return;

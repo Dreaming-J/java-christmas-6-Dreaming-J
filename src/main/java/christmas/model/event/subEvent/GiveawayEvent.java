@@ -30,11 +30,6 @@ public class GiveawayEvent extends Event {
     }
 
     @Override
-    public boolean isGiveawayEvent() {
-        return true;
-    }
-
-    @Override
     public void applyBenefit() {
         if (!canDiscount()) {
             return;
@@ -46,6 +41,7 @@ public class GiveawayEvent extends Event {
                 .signConvert();
     }
 
+    @Override
     public Giveaway getGiveaway() {
         return giveaway;
     }

@@ -2,55 +2,54 @@ package christmas.model;
 
 import static christmas.util.Constant.LINE_BREAK;
 import static christmas.util.Constant.NOTHING;
-import static christmas.util.EventListGenerator.init;
+import static christmas.util.EventMapGenerator.init;
 
 import christmas.dto.Giveaway;
 import christmas.model.date.Date;
 import christmas.model.event.Event;
-import christmas.model.event.subEvent.GiveawayEvent;
+import christmas.model.event.EventEnum;
 import christmas.model.order.Order;
-import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class EventPlanner {
-    private final List<Event> events;
+    private final Map<EventEnum, Event> events;
 
     public EventPlanner(Date date, Order order) {
         events = init(date, order);
-        events.forEach(Event::applyBenefit);
+        eventsValue().forEach(Event::applyBenefit);
+    }
+
+    private Stream<Event> eventsValue() {
+        return events.values()
+                .stream();
     }
 
     public Money totalDiscountWithGiveaway() {
-        return events.stream()
-                .map(Event::getDiscount)
+        return eventsValue().map(Event::getDiscount)
                 .reduce(Money::plus)
                 .orElse(Money.ZERO());
     }
 
     public Money totalDiscountWithoutGiveaway() {
-        return events.stream()
-                .filter(Event::isDiscountEvent)
-                .map(Event::getDiscount)
+        return eventsValueOnlyDiscount().map(Event::getDiscount)
                 .reduce(Money::plus)
                 .orElse(Money.ZERO());
     }
 
-    public Giveaway getGiveaway() {
-        if (hasNotGiveawayEvent()) {
-            return new Giveaway();
-        }
-
-        return events.stream()
-                .filter(Event::isGiveawayEvent)
-                .findFirst()
-                .map(event -> (GiveawayEvent) event)
-                .get()
-                .getGiveaway();
+    private Stream<Event> eventsValueOnlyDiscount() {
+        return events.keySet()
+                .stream()
+                .filter(EventEnum::isDiscountEvent)
+                .map(events::get);
     }
 
-    private boolean hasNotGiveawayEvent() {
-        return events.stream()
-                .noneMatch(Event::isGiveawayEvent);
+    public Giveaway getGiveaway() {
+        return eventsValue().map(Event::getGiveaway)
+                .filter(Giveaway::exists)
+                .findFirst()
+                .orElse(new Giveaway());
     }
 
     public Badge createBadge() {
@@ -63,8 +62,7 @@ public class EventPlanner {
             return NOTHING;
         }
 
-        return events.stream()
-                .map(Event::toString)
+        return eventsValue().map(Event::toString)
                 .collect(Collectors.joining(LINE_BREAK));
     }
 }

@@ -27,11 +27,6 @@ public class ChristmasDdayEvent extends Event {
     }
 
     @Override
-    public boolean isDiscountEvent() {
-        return true;
-    }
-
-    @Override
     public void applyBenefit() {
         if (!canDiscount()) {
             return;

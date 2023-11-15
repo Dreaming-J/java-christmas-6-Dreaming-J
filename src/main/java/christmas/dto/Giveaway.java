@@ -25,6 +25,10 @@ public class Giveaway {
         return this.menu;
     }
 
+    public boolean exists() {
+        return this.menu != null;
+    }
+
     @Override
     public String toString() {
         if (Objects.isNull(menu)) {
